@@ -22,10 +22,7 @@ marketShares =1000;
 
 # Situation One lots of HODL agents mixed evenly with random
 #TEST 1
-for i in range (0,numAgents):
-    
-    testAgent = agentFactory.createAgent("RSI",marketValue)
-    agents.append(testAgent)
+
 
 
 '''
@@ -41,6 +38,34 @@ for i in range (0,numAgents):
 # ================Create agents =======================
 
 
+def TestCase1():
+    global agents
+    for i in range (0,numAgents):
+        testAgent = agentFactory.createAgent("Random",marketValue)
+        agents.append(testAgent)
+
+
+
+def TestCase2():
+    global agents
+    for i in range (0,numAgents):
+        if i %2== 0:
+            testAgent = agentFactory.createAgent("Random",marketValue)
+        else:
+            testAgent = agentFactory.createAgent("Hodl",marketValue)
+        agents.append(testAgent)
+
+
+def TestCase2():
+    global agents
+    for i in range (0,numAgents):
+        if i %2== 0:
+            testAgent = agentFactory.createAgent("Random",marketValue)
+        else:
+            testAgent = agentFactory.createAgent("Hodl",marketValue)
+        agents.append(testAgent)
+
+
 
 
 
@@ -51,7 +76,7 @@ def animate(i):
     global marketValue 
     getCurrentBids()
     marketValue = getMarketPrice()
-    print ("Current market shares:  ",marketShares,"\n")
+    print ("Current market shares:  ",marketShares,"")
     print("Current market price:  ",marketValue,"\n")
 
     ax1.clear()
@@ -143,10 +168,6 @@ def getMarketPrice():
 
 
 
-
-
-
-
 def updateMarket():
     global marketShares
     marketValue=int(getMarketPrice())
@@ -157,17 +178,17 @@ def updateMarket():
 
 
 
+TestCase2()
 
-
-ani = animation.FuncAnimation(fig, animate, interval =1000)
+ani = animation.FuncAnimation(fig, animate, frames =15, interval =1000)
 plt.show()
 
 HighestValue=0 
+agentTypeHighest=""
 for agent in agents:
     if(agent.getTotalAssets(marketValue)>HighestValue):
-        print(marketValue)
         HighestValue=agent.getTotalAssets(marketValue)
+        agentTypeHighest = agent.agentType
 
-
-
+print("Most successful agent is type:",agentTypeHighest," \nTotal assets of most successful agent worth", HighestValue )
 

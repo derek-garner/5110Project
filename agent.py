@@ -31,13 +31,9 @@ class Agent(object):
                 if(bid[0]<marketShares):
                     self.numOwnedShares+=bid[0]
                     self.funds-= bid[0]*bid[1]
-                    print("Buying",bid[0])
-                    print(self.numOwnedShares)
                     return bid[0]
 
                 else:
-                    print("Buying",marketShares)
-                    print(self.numOwnedShares)
                     self.numOwnedShares+=marketShares
                     self.funds-= marketShares*bid[1]
                     return marketShares

@@ -1,6 +1,6 @@
 from randomAgent import RandomAgent
 from hodlAgent import HodlAgent
-from RSIAgent import TrendingAgent
+from TrendingAgent import TrendingAgent
 
 def createAgent(type,marketValue):
     if type =="Random":
@@ -11,3 +11,8 @@ def createAgent(type,marketValue):
 
     if type =="RSI":
         return TrendingAgent(marketValue)
+
+    if type =="NonParticipating":
+        return NonParticipating(marketValue)
+
+
