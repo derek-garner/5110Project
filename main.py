@@ -3,6 +3,7 @@ import matplotlib.animation as animation
 from matplotlib import style
 import agentFactory
 import math
+import random
 style.use('fivethirtyeight')
 
 fig = plt.figure()
@@ -20,24 +21,11 @@ marketShares =1000;
 
 # ================Create agents =======================
 
-# Situation One lots of HODL agents mixed evenly with random
-#TEST 1
-
-
-
-'''
-      if i %2== 0:
-        testAgent = agentFactory.createAgent("Random",marketValue)
-    else:
-        testAgent = agentFactory.createAgent("Hodl",marketValue)
-    agents.append(testAgent)
-# Situation One lots of HODL agents mixed evenly with random
-'''
 
 
 # ================Create agents =======================
 
-
+#===================Demonstration Test Cases====================
 def TestCase1():
     global agents
     for i in range (0,numAgents):
@@ -56,7 +44,17 @@ def TestCase2():
         agents.append(testAgent)
 
 
-def TestCase2():
+
+def TestCase3():
+    global agents
+   
+    choices = ["Random","Hodl","Trending","NonParticipating"]
+    for i in range (0,numAgents):
+        testAgent = agentFactory.createAgent(choices[random.randint(0,3)],marketValue)
+        agents.append(testAgent)
+
+
+def TestCase4():
     global agents
     for i in range (0,numAgents):
         if i %2== 0:
@@ -66,6 +64,7 @@ def TestCase2():
         agents.append(testAgent)
 
 
+#===================Demonstration Test Cases====================
 
 
 
@@ -178,7 +177,7 @@ def updateMarket():
 
 
 
-TestCase2()
+TestCase3()
 
 ani = animation.FuncAnimation(fig, animate, frames =15, interval =1000)
 plt.show()

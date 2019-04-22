@@ -23,7 +23,7 @@ class NonParticipating(Agent):
 
 
     def setBids(self,marketPrice=0):
-     pass
+        pass
             
 
 
