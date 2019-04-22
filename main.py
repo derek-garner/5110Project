@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-from randomAgent import RandomAgent
 import matplotlib.animation as animation
 from matplotlib import style
 import agentFactory
@@ -25,7 +24,7 @@ marketShares =1000;
 #TEST 1
 for i in range (0,numAgents):
     
-    testAgent = agentFactory.createAgent("Random",marketValue)
+    testAgent = agentFactory.createAgent("RSI",marketValue)
     agents.append(testAgent)
 
 
@@ -115,6 +114,8 @@ def getMarketPrice():
     global sellPriceBook
     validBuyOrders=[]
     validSellOrders = []
+    closestI=[]
+    closestJ=[]
 
     for i in range(0,len(buyPriceBook)):
         if(buyPriceBook[i]!=0):
@@ -133,8 +134,10 @@ def getMarketPrice():
                 closestI= i
                 closestJ= i
     
+    if(len(closestI)>0 and len(closestJ)>0):
+        return (closestI[0] +closestJ[0]) /2
 
-    return (closestI[0] +closestJ[0]) /2
+    else: return marketValue
 
 # Determine current market price
 
