@@ -10,6 +10,8 @@ fig = plt.figure()
 ax1 = fig.add_subplot(1,1,1)
 plt.plot([1,2,3], label="test1")
 plt.plot([3,2,1], label="test2")
+
+#===========Market Variables=============
 agents = []
 bidsToBuy = []
 bidsToSell = []
@@ -18,8 +20,8 @@ buyPriceBook = [0]*5000
 sellPriceBook = [0]*500*numAgents 
 marketValue =250
 marketShares =1000;
+#===========Market Variables=============
 
-# ================Create agents =======================
 
 
 
@@ -60,7 +62,7 @@ def TestCase4():
         if i %2== 0:
             testAgent = agentFactory.createAgent("Random",marketValue)
         else:
-            testAgent = agentFactory.createAgent("Hodl",marketValue)
+            testAgent = agentFactory.createAgent("Trending",marketValue)
         agents.append(testAgent)
 
 
@@ -176,8 +178,14 @@ def updateMarket():
         agent.update(marketValue)
 
 
+#Main Script================================
 
-TestCase3()
+
+
+TestCase4()
+
+
+
 
 ani = animation.FuncAnimation(fig, animate, frames =15, interval =1000)
 plt.show()

@@ -7,15 +7,15 @@ class RandomAgent(Agent):
     
     def __init__(self,marketValue):
         super(RandomAgent,self).__init__()
-        self.idealBuyPrice = marketValue +  random.randint( -marketValue/10,0)
-        self.idealSellPrice = marketValue + random.randint(0,marketValue/2)
+        self.idealBuyPrice = marketValue +  random.randint( -marketValue//10,0)
+        self.idealSellPrice = marketValue + random.randint(0,marketValue//2)
         self.setBids()
         self.agentType= "Random"
        
         
     def update(self,marketValue):
-        self.idealBuyPrice = marketValue +  random.randint(-marketValue/10,0)
-        self.idealSellPrice = marketValue + random.randint(0,marketValue)
+        self.idealBuyPrice = marketValue +  random.randint(-marketValue//10,0)
+        self.idealSellPrice = marketValue + random.randint(0,marketValue//2)
         self.bidsToBuy = []
         self.bidsToSell= []
 

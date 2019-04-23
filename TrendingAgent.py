@@ -14,7 +14,7 @@ class TrendingAgent(Agent):
         self.lastFourBids = []
         self.setBids(marketValue)
         
-        self.agentType= "RSI"
+        self.agentType= "Trending"
 
 
     def update(self,marketValue):
